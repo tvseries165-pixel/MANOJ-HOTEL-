@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Manoj Hotel And Family Restaurant - Pure vegetarian family restaurant. Complete menu with all dishes, parathas, drinks, and great tea. Located in Uttar Pradesh.">
+    <meta name="keywords" content="Manoj Hotel, Family Restaurant, vegetarian menu, all dishes, drinks, paratha price, pure veg">
+    <title>Manoj Hotel & Family Restaurant | Pure Veg | Full Menu & Drinks</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefaf5;
+            color: #1a1a1a;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* HEADER - CENTERED BIG BOLD BLACK NAME */
+        .main-header {
+            background: #ffffff;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.02);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #f0e2d4;
+        }
+        .header-center {
+            text-align: center;
+            padding: 32px 20px 16px 20px;
+        }
+        .restaurant-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #000000;
+            letter-spacing: -0.8px;
+            margin-bottom: 8px;
+        }
+        .restaurant-tag {
+            font-size: 0.9rem;
+            color: #6b4c3b;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+        /* Navigation TABS - only active section visible */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 2.8rem;
+            flex-wrap: wrap;
+            padding: 16px 20px 20px 20px;
+            border-top: 1px solid #f3e8de;
+            background: #ffffff;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #2c2b28;
+            cursor: pointer;
+            transition: 0.2s;
+            padding-bottom: 6px;
+            border-bottom: 2px solid transparent;
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-btn:hover {
+            color: #c96f2c;
+        }
+        .tab-btn.active {
+            color: #c96f2c;
+            border-bottom-color: #c96f2c;
+        }
+
+        /* Section visibility - only active tab content shows */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active-content {
+            display: block;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: #c96f2c;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            display: inline-block;
+            text-decoration: none;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #a8551a;
+        }
+
+        /* Hero Section (inside home tab) */
+        .hero {
+            background: linear-gradient(115deg, #fcf3e9 0%, #fff9f2 100%);
+            padding: 70px 0 80px;
+            border-radius: 0 0 40px 40px;
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 48px;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        .badge {
+            background: #e7d9ce;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            align-items: center;
+        }
+        .about-text {
+            flex: 1.2;
+        }
+        .about-features {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            background: #fff7f0;
+            padding: 32px;
+            border-radius: 32px;
+        }
+        .feature-item i {
+            font-size: 2rem;
+            color: #c96f2c;
+            margin-bottom: 12px;
+        }
+        .feature-item h4 {
+            margin-bottom: 6px;
+        }
+
+        /* ========== UNIFIED MENU SECTION (NO IMAGES, ONLY DISHES & DRINKS LIKE HOTEL MENU) ========== */
+        .menu-section {
+            background: #fffdf9;
+            padding: 60px 0;
+        }
+        .menu-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .menu-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 8px;
+        }
+        .menu-header p {
+            color: #6b4c3b;
+            font-size: 1rem;
+        }
+        .menu-category {
+            margin-bottom: 56px;
+        }
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            border-left: 6px solid #c96f2c;
+            padding-left: 20px;
+            margin-bottom: 28px;
+            color: #1e1e1e;
+        }
+        .menu-table {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f0e3d8;
+        }
+        .menu-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 16px 24px;
+            border-bottom: 1px dashed #f0e3d8;
+            transition: background 0.2s;
+        }
+        .menu-row:last-child {
+            border-bottom: none;
+        }
+        .menu-row:hover {
+            background: #fef9f3;
+        }
+        .dish-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #2c2b28;
+        }
+        .veg-icon {
+            color: #2e7d32;
+            font-size: 0.7rem;
+            margin-left: 8px;
+        }
+        .dish-price {
+            font-weight: 700;
+            color: #c96f2c;
+            font-size: 1.05rem;
+        }
+        .menu-subnote {
+            text-align: center;
+            margin-top: 32px;
+            padding: 16px;
+            background: #fff7f0;
+            border-radius: 48px;
+            font-size: 0.85rem;
+            color: #6b4c3b;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+        .testimonial-card {
+            background: white;
+            padding: 28px;
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid #f0e3d8;
+        }
+        .rating {
+            color: #ffb347;
+            margin-bottom: 16px;
+        }
+
+        /* Contact */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            background: #1f1b19;
+            color: #fef1e4;
+            padding: 48px;
+            border-radius: 36px;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-detail {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .access-tag {
+            background: rgba(255,255,245,0.12);
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+        footer {
+            background: #12100e;
+            color: #cdc2b9;
+            padding: 40px 0;
+            text-align: center;
+        }
+        @media (max-width: 760px) {
+            .restaurant-name { font-size: 2.3rem; }
+            .hero-content h1 { font-size: 2rem; }
+            .category-title { font-size: 1.5rem; }
+            .menu-row { padding: 12px 18px; flex-wrap: wrap; }
+            .nav-tabs { gap: 1.5rem; }
+        }
+        .highlight-text {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+    <div class="header-center">
+        <!-- HOTEL NAME: CENTER, BIG, BOLD, BLACK -->
+        <div class="restaurant-name">MANOJ HOTEL & FAMILY RESTAURANT</div>
+        <div class="restaurant-tag">pure vegetarian · fresh parathas · great tea · family friendly</div>
+    </div>
+    <!-- TABS - only these control what content is visible -->
+    <div class="nav-tabs">
+        <button class="tab-btn active" data-tab="home">HOME</button>
+        <button class="tab-btn" data-tab="about">ABOUT</button>
+        <button class="tab-btn" data-tab="menu">MENU</button>
+        <button class="tab-btn" data-tab="reviews">REVIEWS</button>
+        <button class="tab-btn" data-tab="contact">CONTACT</button>
+    </div>
+</header>
+
+<main>
+    <!-- HOME TAB CONTENT -->
+    <div id="home" class="tab-content active-content">
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="badge"><i class="fas fa-leaf"></i> 100% Vegetarian</div>
+                    <h1>Fresh Parathas, Great Tea & Warm Smiles</h1>
+                    <p>Casual, family-friendly dining in Uttar Pradesh. Enjoy authentic flavours, humble service, and spotless hygiene. Rated 4.5 ⭐ by our guests.</p>
+                    <button class="btn-primary" id="homeMenuBtn"><i class="fas fa-utensils"></i> View Full Menu →</button>
+                    <div style="display:flex; gap:28px; margin-top:30px;">
+                        <span><i class="fas fa-star"></i> 4.5 (17 reviews)</span>
+                        <span><i class="fas fa-mug-hot"></i> Great tea selection</span>
+                    </div>
+                </div>
+                <div style="flex:0.8; text-align:center;">
+                    <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500&auto=format" alt="Restaurant ambiance" style="border-radius: 36px; width:100%; max-width:380px; box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ABOUT TAB CONTENT (only about details, no extra) -->
+    <div id="about" class="tab-content">
+        <section style="padding: 80px 0;">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h2 class="section-title" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 800; margin-bottom: 32px; position: relative; display: inline-block;">About Us</h2>
+                        <div style="height: 3px; width: 70px; background: #c96f2c; margin-bottom: 28px;"></div>
+                        <p style="margin: 0 0 18px 0; font-size:1.08rem; line-height:1.5;">Manoj Hotel And Family Restaurant is a casual and family-friendly place offering delicious vegetarian food. Known for its <strong>fresh and tasty parathas, good hygiene, and humble service</strong>. We provide a comfortable dining experience for families, groups, and solo visitors.</p>
+                        <p>📍 Shop No 1, Sainya Pool Se Pahale, Uttar Pradesh 283124<br>⏰ Open Daily: 8:00 AM – 11:00 PM (Late-night bites available)</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px;">
+                            <span class="access-tag" style="background:#e7d9ce; color:#3d2a21;"><i class="fas fa-wheelchair"></i> Wheelchair accessible</span>
+                            <span class="access-tag" style="background:#e7d9ce; color:#3d2a21;"><i class="fas fa-parking"></i> Free Parking</span>
+                            <span class="access-tag" style="background:#e7d9ce; color:#3d2a21;"><i class="fas fa-child"></i> Kids friendly</span>
+                        </div>
+                    </div>
+                    <div class="about-features">
+                        <div class="feature-item"><i class="fas fa-hand-sparkles"></i><h4>Hygiene First</h4><p>Spotless kitchen & dining</p></div>
+                        <div class="feature-item"><i class="fas fa-mug-hot"></i><h4>Great Tea</h4><p>Masala chai & special coffee</p></div>
+                        <div class="feature-item"><i class="fas fa-people-arrows"></i><h4>Family & Groups</h4><p>Spacious, casual vibe</p></div>
+                        <div class="feature-item"><i class="fas fa-allergies"></i><h4>Pure Veg</h4><p>No eggs, 100% vegetarian</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- MENU TAB CONTENT (ONLY MENU, nothing else above or below inside this tab) -->
+    <div id="menu" class="tab-content">
+        <div class="menu-section">
+            <div class="container">
+                <div class="menu-header">
+                    <h3>🍽️ OUR COMPLETE MENU</h3>
+                    <p>all dishes · fresh parathas · great tea selection · pure vegetarian</p>
+                </div>
+
+                <!-- STARTERS -->
+                <div class="menu-category">
+                    <div class="category-title">🌱 Starters & Quick Bites</div>
+                    <div class="menu-table">
+                        <div class="menu-row"><div class="dish-name">Paneer Tikka <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹199</div></div>
+                        <div class="menu-row"><div class="dish-name">Veg Crispy <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹169</div></div>
+                        <div class="menu-row"><div class="dish-name">Hara Bhara Kabab <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹149</div></div>
+                        <div class="menu-row"><div class="dish-name">Samosa (2 pcs) <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹40</div></div>
+                        <div class="menu-row"><div class="dish-name">Corn Salt & Pepper <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹159</div></div>
+                        <div class="menu-row"><div class="dish-name">Spring Rolls (Veg) <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹129</div></div>
+                    </div>
+                </div>
+
+                <!-- PARATHAS -->
+                <div class="menu-category">
+                    <div class="category-title">🥘 Parathas (Our Specialty)</div>
+                    <div class="menu-table">
+                        <div class="menu-row"><div class="dish-name">Aloo Paratha <i class="fas fa-leaf veg-icon"></i> <span style="font-size:0.7rem; background:#e7d9ce; padding:2px 8px; border-radius:20px; margin-left:6px;">best seller</span></div><div class="dish-price">₹89</div></div>
+                        <div class="menu-row"><div class="dish-name">Gobi Paratha <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹99</div></div>
+                        <div class="menu-row"><div class="dish-name">Paneer Paratha <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹129</div></div>
+                        <div class="menu-row"><div class="dish-name">Mix Paratha Platter <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹199</div></div>
+                        <div class="menu-row"><div class="dish-name">Methi Paratha <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹89</div></div>
+                    </div>
+                </div>
+
+                <!-- MAIN COURSE -->
+                <div class="menu-category">
+                    <div class="category-title">🍛 Main Course (Curries & Gravies)</div>
+                    <div class="menu-table">
+                        <div class="menu-row"><div class="dish-name">Shahi Paneer <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹219</div></div>
+                        <div class="menu-row"><div class="dish-name">Dal Makhani <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹179</div></div>
+                        <div class="menu-row"><div class="dish-name">Veg Kolhapuri <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹189</div></div>
+                        <div class="menu-row"><div class="dish-name">Palak Paneer <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹199</div></div>
+                        <div class="menu-row"><div class="dish-name">Kadai Paneer <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹209</div></div>
+                        <div class="menu-row"><div class="dish-name">Malai Kofta <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹199</div></div>
+                        <div class="menu-row"><div class="dish-name">All You Can Eat Thali <i class="fas fa-leaf veg-icon"></i> <span style="font-size:0.7rem;">(unlimited)</span></div><div class="dish-price">₹299</div></div>
+                    </div>
+                </div>
+
+                <!-- RICE & BREADS -->
+                <div class="menu-category">
+                    <div class="category-title">🍚 Rice & Indian Breads</div>
+                    <div class="menu-table">
+                        <div class="menu-row"><div class="dish-name">Veg Biryani <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹199</div></div>
+                        <div class="menu-row"><div class="dish-name">Jeera Rice <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹119</div></div>
+                        <div class="menu-row"><div class="dish-name">Steamed Rice <i class="fas fa-leaf veg-icon"></i></div><div class="dish-price">₹90</div></div>
+                        <div class="menu-row"><div class="dish-name">Tandoori Roti</div><div class="dish-price">₹25</div></div>
+                        <div class="menu-row"><div class="dish-name">Butter Naan</div><div class="dish-price">₹45</div></div>
+                        <div class="menu-row"><div class="dish-name">Garlic Naan</div><div class="dish-price">₹55</div></div>
+                    </div>
+                </div>
+
+                <!-- DRINKS & BEVERAGES -->
+                <div class="menu-category">
+                    <div class="category-title">☕ Drinks & Beverages (Great Tea Selection)</div>
+                    <div class="menu-table">
+                        <div class="menu-row"><div class="dish-name">Masala Chai <i class="fas fa-mug-hot"></i></div><div class="dish-price">₹25</div></div>
+                        <div class="menu-row"><div class="dish-name">Special Coffee <i class="fas fa-coffee"></i></div><div class="dish-price">₹49</div></div>
+                        <div class="menu-row"><div class="dish-name">Elaichi Chai</div><div class="dish-price">₹25</div></div>
+                        <div class="menu-row"><div class="dish-name">Sweet Lassi</div><div class="dish-price">₹70</div></div>
+                        <div class="menu-row"><div class="dish-name">Salt Lassi</div><div class="dish-price">₹70</div></div>
+                        <div class="menu-row"><div class="dish-name">Fresh Lime Soda (Sweet/Salt)</div><div class="dish-price">₹55</div></div>
+                        <div class="menu-row"><div class="dish-name">Buttermilk (Chaas)</div><div class="dish-price">₹40</div></div>
+                        <div class="menu-row"><div class="dish-name">Cold Drink (Coke/Pepsi)</div><div class="dish-price">₹40</div></div>
+                        <div class="menu-row"><div class="dish-name">Mineral Water</div><div class="dish-price">₹20</div></div>
+                    </div>
+                </div>
+
+                <!-- DESSERTS -->
+                <div class="menu-category">
+                    <div class="category-title">🍰 Desserts & Sweets</div>
+                    <div class="menu-table">
+                        <div class="menu-row"><div class="dish-name">Gulab Jamun (2 pcs)</div><div class="dish-price">₹60</div></div>
+                        <div class="menu-row"><div class="dish-name">Kheer</div><div class="dish-price">₹80</div></div>
+                        <div class="menu-row"><div class="dish-name">Vanilla Ice Cream</div><div class="dish-price">₹55</div></div>
+                        <div class="menu-row"><div class="dish-name">Rasmalai</div><div class="dish-price">₹90</div></div>
+                    </div>
+                </div>
+
+                <!-- LATE NIGHT BITES -->
+                <div class="menu-category">
+                    <div class="category-title">🌙 Late Night Bites & Small Plates</div>
+                    <div class="menu-table">
+                        <div class="menu-row"><div class="dish-name">Veg Sandwich</div><div class="dish-price">₹80</div></div>
+                        <div class="menu-row"><div class="dish-name">Bread Pakora</div><div class="dish-price">₹60</div></div>
+                        <div class="menu-row"><div class="dish-name">Mix Pakora Platter</div><div class="dish-price">₹120</div></div>
+                        <div class="menu-row"><div class="dish-name">Maggi (Veg)</div><div class="dish-price">₹70</div></div>
+                    </div>
+                </div>
+
+                <div class="menu-subnote">
+                    <i class="fas fa-leaf"></i> 100% Vegetarian · All prices inclusive of taxes · Dine-in & Takeaway available · Great tea served all day
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REVIEWS TAB CONTENT -->
+    <div id="reviews" class="tab-content">
+        <section style="background:#faf4ed; padding: 80px 0;">
+            <div class="container">
+                <h2 class="section-title" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 800; margin-bottom: 32px; position: relative; display: inline-block;">What Our Guests Say</h2>
+                <div style="height: 3px; width: 70px; background: #c96f2c; margin-bottom: 28px;"></div>
+                <div style="display:flex; align-items:center; gap:12px; margin: 20px 0 20px;"><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><strong>4.5</strong><span>(17 Google reviews)</span></div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card"><div class="rating">⭐⭐⭐⭐⭐</div><p class="testimonial-text">“The man was very humble and served tasty and fresh parantha. Best paratha in town! Must visit for breakfast.”</p><p class="testimonial-author">— Ramesh K.</p></div>
+                    <div class="testimonial-card"><div class="rating">⭐⭐⭐⭐⭐</div><p class="testimonial-text">“Good food and hygiene. Loved the cleanliness and the humble staff. The tea and coffee are amazing.”</p><p class="testimonial-author">— Sneha V.</p></div>
+                    <div class="testimonial-card"><div class="rating">⭐⭐⭐⭐½</div><p class="testimonial-text">“Very good and cordial people. Great place for family dining. The veg platter and all you can eat thali is value for money.”</p><p class="testimonial-author">— Amit S.</p></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTACT TAB CONTENT -->
+    <div id="contact" class="tab-content">
+        <section style="padding: 80px 0;">
+            <div class="container">
+                <div class="contact-flex">
+                    <div class="contact-info">
+                        <h3 style="font-size:1.9rem; font-family:'Playfair Display';">Get in Touch</h3>
+                        <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> <span>Shop No 1, Sainya Pool Se Pahale, Uttar Pradesh 283124</span></div>
+                        <div class="contact-detail"><i class="fas fa-phone-alt"></i> <span><a href="tel:06395578105" style="color:#f5bc70;">06395578105</a></span></div>
+                        <div class="contact-detail"><i class="fas fa-clock"></i> <span>Breakfast, Lunch, Dinner · 8 AM – 11 PM (Late-night available)</span></div>
+                        <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top: 20px;">
+                            <span><i class="fas fa-wheelchair"></i> Wheelchair accessible</span>
+                            <span><i class="fas fa-parking"></i> Free parking lot & street</span>
+                        </div>
+                        <div class="map-link" style="margin-top: 28px;"><i class="fas fa-directions"></i> <a href="https://maps.app.goo.gl/iW9Ytx3swPJShVim7?g_st=abt" target="_blank" style="color:#f5bc70;">Open Google Maps</a></div>
+                    </div>
+                    <div class="contact-info"><h4>Service Options</h4><ul style="list-style:none; margin-top: 20px;"><li><i class="fas fa-check-circle"></i> Dine-in · Takeaway</li><li><i class="fas fa-check-circle"></i> Great tea selection & coffee</li><li><i class="fas fa-check-circle"></i> Table service · Restroom</li><li><i class="fas fa-check-circle"></i> Family & groups welcome</li><li><i class="fas fa-check-circle"></i> Wheelchair accessible seating & toilet</li></ul></div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="container"><p>© 2025 Manoj Hotel And Family Restaurant | Pure Vegetarian | Fresh Parathas & Great Tea | Shop No 1, Sainya Pool Se Pahale, Uttar Pradesh</p></div>
+</footer>
+
+<script>
+    // Tab switching functionality - only selected tab content shows, nothing else
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+
+    function activateTab(tabId) {
+        // Hide all contents
+        contents.forEach(content => {
+            content.classList.remove('active-content');
+        });
+        // Remove active class from all buttons
+        tabs.forEach(btn => {
+            btn.classList.remove('active');
+        });
+        // Show selected content
+        const activeContent = document.getElementById(tabId);
+        if (activeContent) {
+            activeContent.classList.add('active-content');
+        }
+        // Add active class to clicked button
+        const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+        if (activeBtn) {
+            activeBtn.classList.add('active');
+        }
+        // Scroll to top smoothly when tab changes
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tabId = tab.getAttribute('data-tab');
+            activateTab(tabId);
+        });
+    });
+
+    // Button inside home tab to go to menu
+    const homeMenuBtn = document.getElementById('homeMenuBtn');
+    if (homeMenuBtn) {
+        homeMenuBtn.addEventListener('click', () => {
+            activateTab('menu');
+        });
+    }
+
+    // Ensure default home tab is active on load (already active by default in HTML)
+    // If any hash in URL, respect it but we keep it simple
+    if (window.location.hash) {
+        const hash = window.location.hash.substring(1);
+        if (['home', 'about', 'menu', 'reviews', 'contact'].includes(hash)) {
+            activateTab(hash);
+        }
+    }
+</script>
+</body>
+</html>
